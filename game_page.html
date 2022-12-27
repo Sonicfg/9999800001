@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>copi barata de Adivina la palabra: quiz matematico!!!🍕</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<style>
+		body {
+			background: orangered;
+			text-align: center;
+		}
+
+		h4 {
+			display: inline-block;
+			padding-right: 10px;
+		}
+
+		#mostrarPalabra {
+			letter-spacing: 5px;
+		}
+
+		#seccionPreguntaRespuesta {
+			background: white;
+			border-radius: 10px;
+			border-top: 10px solid #AA4465;
+			padding: 10px;
+			float: none;
+			text-align: center;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<h4 id="nombreJugador1"></h4><span id="puntosJugador1"></span>
+	<br>
+	<h4 id="nombreJugador2"></h4><span id="puntosJugador2"></span>
+	<div class="container">
+		<h2 style="color: white;">no no prueba de no no matematicas</h2>
+		<h3 id="quienPregunta"></h3>
+		<h3 id="quienResponde"></h3>
+		<div id="seccionPreguntaRespuesta" class="col-lg-6"></div>
+		<br><br>
+		<label>#1:<b style="color: red">snio</b></label>
+		<input type="text" id="onu1" class="form-control" placeholder="escribe lo contrario a una palbra">
+		<br>
+		<label>#1:<b style="color: red">snio</b></label>
+		<input type="text" id="onu2" class="form-control" placeholder="escribe lo contrario a una palbra osea reverso">
+		<br>
+		<button onclick="enviar()" class="btn bg-success">Enviar</button>
+	</div>
+
+	<script>
+		jugador1 = localStorage.getItem("jugador1");
+		jugador2 = localStorage.getItem("jugador2");
+
+		var puntosJugador1 = 0;
+		var puntosJugador2 = 0;
+
+		document.getElementById("nombreJugador1").innerHTML = jugador1 + " :";
+		document.getElementById("nombreJugador2").innerHTML = jugador2 + " :";
+
+		document.getElementById("puntosJugador1").innerHTML = puntosJugador1 + " puntos";
+		document.getElementById("puntosJugador2").innerHTML = puntosJugador2 + " puntos";
+
+		document.getElementById("quienPregunta").innerHTML = "Turno para preguntar - " + jugador1;
+		document.getElementById("quienResponde").innerHTML = "Turno para responder - " + jugador2;
+
+		function enviar() {
+			uonu = document.getElementById("onu1").value;
+			uonu1 = document.getElementById("onu2").value;
+			numero = parseInt(uonu) * parseInt(uonu1);
+			seccionPreguntaRespuesta = "<h4 id='mostrarPalabra'>" + uonu + "x" + uonu1 + "</h4><br><br><input type='text' id='respuestaUsuario' placeholder='Respuesta'><br><br><button class='btn btn-info' onclick='comprobar()'>Comprobar</button><br>";
+			document.getElementById("seccionPreguntaRespuesta").innerHTML = seccionPreguntaRespuesta;
+			document.getElementById("onu1").value = "";
+			document.getElementById("onu2").value = "";
+		}
+
+		turnoPregunta = jugador1;
+		turnoRespuesta = jugador2;
+
+		function comprobar() {
+			respuesta = document.getElementById("respuestaUsuario").value;
+			if (numero == respuesta) {
+				if (turnoRespuesta == jugador1) {
+					puntosJugador1++;
+					document.getElementById("puntosJugador1").innerHTML = puntosJugador1 + " puntos";
+				} else {
+					puntosJugador2++;
+					document.getElementById("puntosJugador2").innerHTML = puntosJugador2 + " puntos";
+				}
+			}
+			if (turnoPregunta == jugador1) {
+				turnoPregunta = jugador2;
+				turnoRespuesta = jugador1;
+			} else {
+				turnoPregunta = jugador1;
+				turnoRespuesta = jugador2;
+			}
+
+
+			document.getElementById("seccionPreguntaRespuesta").innerHTML = "";
+			document.getElementById("quienPregunta").innerHTML = "Turno para preguntar - " + turnoPregunta;
+			document.getElementById("quienResponde").innerHTML = "Turno para responder - " + turnoRespuesta;
+		}
+	</script>
+</body>
+
+</html>

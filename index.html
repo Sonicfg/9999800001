@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adivinador-que-no-tiene-tiempo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>juego</h1>
+    <div class="col-lg-4 col-sm-8 col-xs-11 login">
+        <h3>juegador1 inicia sesion para jugar</h3>
+        <label for="jugador1">nombre del jugador</label>
+        <input type="text" id="Jugador1" class="from-control" placeholder="nombre del jugador 1">
+    </div><br>
+    <div class="col-lg-4 col-sm-8 col-xs-11 login">
+        <h3>juegador2 inicia sesion para jugar</h3>
+        <label for="jugador2">nombre del jugador</label>
+        <input type="text" id="Jugador2" class="from-control" placeholder="nombre del jugador 2">
+    </div><br>
+    <button class="btn btn-danger" onclick="agregarUsuario()"> iniciar sesion</button>
+    <script> function agregarUsuario() {
+            Jugador1 = document.getElementById("Jugador1").value;
+            Jugador2 = document.getElementById("Jugador2").value;
+            localStorage.setItem("jugador1", Jugador1);
+            localStorage.setItem("jugador2", Jugador2);
+            location = "game_page.html";
+        }
+    </script>
+
+
+</body>
+
+</html424242>
